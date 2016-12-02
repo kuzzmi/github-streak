@@ -3,7 +3,7 @@ node_js:
   - "6"
 
 install:
-    - npm install -g mocha
+    - npm install -g mocha yarn
 
 before_script:
     - yarn install
