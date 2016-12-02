@@ -2,6 +2,12 @@ language: node_js
 node_js:
   - "6"
 
+install:
+    - npm install -g mocha
+
+before_script:
+    - yarn install
+
 script:
     - npm test
 
