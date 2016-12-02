@@ -1,7 +1,6 @@
 const router = require('express').Router();
+const webhooks = require('./webhooks');
 
-router.get('/webhooks', (req, res) => {
-    res.status(200).json({});
-});
+router.use('/webhooks', webhooks);
 
 module.exports = router;

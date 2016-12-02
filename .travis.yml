@@ -1,14 +1,13 @@
 language: node_js
 node_js:
-  - "6"
-
+- '6'
 install:
-    - npm install -g mocha yarn
-
+- npm install -g mocha yarn
 before_script:
-    - yarn install
-
+- yarn install
 script:
-    - npm test
-
+- npm test
 cache: yarn
+notifications:
+  slack:
+    secure: mk9TRgKK2BLbGGOTZ3WTCm7c4+aS6osEQiYjp0CV3RTSC8crzkcE8dM8/kxXs/JhC0KUTQ5lo1CUagQzb2lpV330Y02QRMDPw2v8rLLmu9xwb8j14DQ+WeW8jTkLJ7LlF+epbjao6R9x1k7EPZ4D4e9XiFMcVIsasVAKTEKVrKz4DhInTqkzlYW4AsIPengMMJaOaS6PGXSEcpNkgRvMWHxu/GzqWyygyZyBVRdZP4w6fnXKrbihDl4y81Fatfow5B8P0E7CZEc8crFV2A3iM7UVQQncWkdShVImOlvlDORJU6aiwd1skyjVi+r81Zj/hZt2T0AXNPMUBDRVFUdx7Ik+v91PL6oLe6hF+MNJNPLmIpQ3V2Fr31k48oigy/1OXSPAb4eC9Km2XczloqPqMWk8EJEa+EWdWf0K7V//YvRBuZupXJAfszcFEvEKRrEeZfp/sYOFWVLKdi9ckN2ftVVG/87Oy36Ruz3ALhQj8NHBAaGWBBh/DAufiEeBEQDTGyIG4rSdhcN2UluB0JLJurPFnQ0UweL12GPgWAmmFmImR3mzxbMjwexZ5qhI8CFLsr/lW+I+XI9N0Z1fzxfhOzi0USo8DkSt8VAZuyXxjlN57uF/q39LNiXMQGeye50/WJXguVm5a4y9I8Z9qEWWaug7S1AulWG+Lkcg5SgluuU=
