@@ -1,5 +1,5 @@
 const expect = require('chai').expect;
-const streaker = require('../streaker');
+const streaker = require('../app/streaker');
 
 describe('streaker', () => {
     describe('#empty()', () => {
