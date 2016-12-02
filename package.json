@@ -4,6 +4,7 @@
   "description": "![](https://travis-ci.org/kuzzmi/github-streak.svg?branch=master)",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test:watch": "mocha -w ./tests",
     "test": "mocha ./tests"
   },
@@ -23,6 +24,8 @@
     "supertest": "^2.0.1"
   },
   "dependencies": {
-    "express": "^4.14.0"
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "sinon": "^1.17.6"
   }
 }
