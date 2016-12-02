@@ -1,0 +1,19 @@
+{
+  "name": "github-streak",
+  "version": "0.0.0",
+  "description": "![](https://travis-ci.org/kuzzmi/github-streak.svg?branch=master)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kuzzmi/github-streak.git"
+  },
+  "author": "Igor Kuzmenko <igor@kuzzmi.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kuzzmi/github-streak/issues"
+  },
+  "homepage": "https://github.com/kuzzmi/github-streak#readme"
+}
