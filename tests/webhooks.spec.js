@@ -6,48 +6,48 @@ const request = require('supertest')(app.listen());
 describe('webhooks', () => {
     describe('POST /webhooks/push', () => {
         const payload = {
-            'commits': [{
-                'id': '0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c',
-                'message': 'Update README.md',
-                'timestamp': '2015-05-05T19:40:15-04:00',
-                'author': {
-                    'name': 'baxterthehacker',
-                    'email': 'baxterthehacker@users.noreply.github.com',
-                    'username': 'baxterthehacker'
+            commits: [{
+                id: '0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c',
+                message: 'Update README.md',
+                timestamp: '2015-05-05T19:40:15-04:00',
+                author: {
+                    name: 'baxterthehacker',
+                    email: 'baxterthehacker@users.noreply.github.com',
+                    username: 'baxterthehacker'
                 },
-                'committer': {
-                    'name': 'baxterthehacker',
-                    'email': 'baxterthehacker@users.noreply.github.com',
-                    'username': 'baxterthehacker'
+                committer: {
+                    name: 'baxterthehacker',
+                    email: 'baxterthehacker@users.noreply.github.com',
+                    username: 'baxterthehacker'
                 },
-                'added': [],
-                'removed': [],
-                'modified': [
+                added: [],
+                removed: [],
+                modified: [
                     'README.md'
                 ]
             }, {
-                'id': '0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c',
-                'message': 'Update README.md',
-                'timestamp': '2015-05-05T19:40:15-04:00',
-                'author': {
-                    'name': 'baxterthehacker',
-                    'email': 'baxterthehacker@users.noreply.github.com',
-                    'username': 'baxterthehacker'
+                id: '0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c',
+                message: 'Update README.md',
+                timestamp: '2015-05-05T19:40:15-04:00',
+                author: {
+                    name: 'baxterthehacker',
+                    email: 'baxterthehacker@users.noreply.github.com',
+                    username: 'baxterthehacker'
                 },
-                'committer': {
-                    'name': 'baxterthehacker',
-                    'email': 'baxterthehacker@users.noreply.github.com',
-                    'username': 'baxterthehacker'
+                committer: {
+                    name: 'baxterthehacker',
+                    email: 'baxterthehacker@users.noreply.github.com',
+                    username: 'baxterthehacker'
                 },
-                'added': [],
-                'removed': [],
-                'modified': [
+                added: [],
+                removed: [],
+                modified: [
                     'README.md'
                 ]
             }],
-            'pusher': {
-                'name': 'baxterthehacker',
-                'email': 'baxterthehacker@users.noreply.github.com'
+            pusher: {
+                name: 'baxterthehacker',
+                email: 'baxterthehacker@users.noreply.github.com'
             }
         };
 

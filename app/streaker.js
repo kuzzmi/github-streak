@@ -13,12 +13,12 @@ module.exports.empty = () => {
 };
 
 module.exports.addContribution = (contribution) => {
-    const { author, sha1 } = contribution;
+    const { author, id } = contribution;
 
-    if (!usedHashes[sha1]) {
-        byAuthor[author] = byAuthor[author] || [];
-        byAuthor[author].unshift(contribution);
-        usedHashes[sha1] = true;
+    if (!usedHashes[id]) {
+        byAuthor[author.username] = byAuthor[author.username] || [];
+        byAuthor[author.username].unshift(contribution);
+        usedHashes[id] = true;
     }
 
     return byAuthor;
