@@ -23,7 +23,7 @@ describe('dictionary', () => {
             }
         };
 
-        mockery.registerMock('../config.js', config);
+        mockery.registerMock('../config', config);
 
         dictionary = require('../app/dictionary.js');
     });

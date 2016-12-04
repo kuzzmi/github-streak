@@ -1,6 +1,6 @@
 {
     "events": {
-        "EVERY_COMMIT": "",
+        "COMMIT": "%an made a commit: %cm",
         "DOUBLE_COMMIT": "",
         "TRIPLE_COMMIT": "",
         "RAMPAGE_COMMIT": ""

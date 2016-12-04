@@ -1,3 +1,5 @@
+const slack = require('./integrations/slack.js');
+
 const byAuthor = {};
 const usedHashes = {};
 
@@ -20,6 +22,11 @@ module.exports.addContribution = (contribution) => {
         byAuthor[author.username].unshift(contribution);
         usedHashes[id] = true;
     }
+
+    slack.post({
+        commit: contribution,
+        type: 'COMMIT'
+    });
 
     return byAuthor;
 };

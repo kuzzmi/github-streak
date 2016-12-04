@@ -1,9 +1,35 @@
 const sinon = require('sinon');
 const expect = require('chai').expect;
-const app = require('../app');
-const request = require('supertest')(app.listen());
+const mockery = require('mockery');
 
 describe('webhooks', () => {
+    let app;
+    let request;
+
+    before(() => {
+        mockery.enable({
+            warnOnReplace: false,
+            warnOnUnregistered: false,
+            useCleanCache: true
+        });
+
+        slack = {
+            post: sinon.spy(() => {
+                return Promise.resolve();
+            })
+        };
+
+        mockery.registerMock('./integrations/slack.js', slack);
+
+        app = require('../app');
+        request = require('supertest')(app.listen());
+    });
+
+    after(() => {
+        mockery.disable();
+        mockery.deregisterAll();
+    });
+
     describe('POST /webhooks/push', () => {
         const payload = {
             commits: [{

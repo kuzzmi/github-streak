@@ -1,5 +1,6 @@
 const expect = require('chai').expect;
-const streaker = require('../app/streaker');
+const sinon = require('sinon');
+const mockery = require('mockery');
 
 const contribution1 = {
     id: '0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c',
@@ -65,6 +66,32 @@ const contribution3 = {
 };
 
 describe('streaker', () => {
+    let slack;
+    let streaker;
+
+    before(() => {
+        mockery.enable({
+            warnOnReplace: false,
+            warnOnUnregistered: false,
+            useCleanCache: true
+        });
+
+        slack = {
+            post: sinon.spy(() => {
+                return Promise.resolve();
+            })
+        };
+
+        mockery.registerMock('./integrations/slack.js', slack);
+
+        streaker = require('../app/streaker');
+    });
+
+    after(() => {
+        mockery.disable();
+        mockery.deregisterAll();
+    });
+
     describe('#empty()', () => {
         beforeEach(() => {
             streaker.empty();
@@ -139,6 +166,16 @@ describe('streaker', () => {
             streaker.addContribution(contribution2);
 
             expect(streaker.getContributions()[author][0].message).to.equal('Test');
+        });
+
+        it('should call slack.post() on every commit with event type COMMIT', () => {
+            streaker.addContribution(contribution1);
+
+            expect(slack.post.called).to.be.true;
+            expect(slack.post.calledWith({
+                commit: contribution1,
+                type: 'COMMIT'
+            })).to.be.true;
         });
     });
 });

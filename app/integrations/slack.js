@@ -1,7 +1,5 @@
 const request = require('request-promise-native');
-
 const dictionary = require('../dictionary.js');
-
 const webhookUrl = process.env.SLACK_WEBHOOK_URL;
 
 const getRequestOptions = body => ({
