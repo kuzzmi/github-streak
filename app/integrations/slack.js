@@ -1,6 +1,6 @@
 const request = require('request-promise-native');
 
-const NOEVERR_MSG = 'slack.post() must called with event data';
+const dictionary = require('../dictionary.js');
 
 const webhookUrl = process.env.SLACK_WEBHOOK_URL;
 
@@ -13,23 +13,23 @@ const getRequestOptions = body => ({
 
 module.exports.post = event => {
     if (!event) {
-        throw new Error(NOEVERR_MSG);
+        throw new Error('slack.post(): no event was passed');
     }
 
-    const { author, eventType } = event;
+    const { author, type, commitTitle } = event;
 
-    if ( !author || !eventType ) {
-        throw new Error(NOEVERR_MSG);
+    const text = dictionary.get(event);
+
+    if (!text) {
+        return false;
     }
 
-    const payload = {
-        text: `${author} got a double commit!`
-    };
+    const payload = { text };
 
-    request(getRequestOptions(payload))
+    return request(getRequestOptions(payload))
         .then(() => {
             console.log('New event has been posted to Slack');
-        }).catch(() => {
-            console.error('Error occured when trying to make a POST to Slack');
+        }).catch(err => {
+            console.error('Error occured when trying to make a POST to Slack', err);
         });
 };

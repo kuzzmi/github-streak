@@ -11,14 +11,14 @@ describe('webhooks', () => {
                 message: 'Update README.md',
                 timestamp: '2015-05-05T19:40:15-04:00',
                 author: {
-                    name: 'baxterthehacker',
-                    email: 'baxterthehacker@users.noreply.github.com',
-                    username: 'baxterthehacker'
+                    name: 'test',
+                    email: 'test@users.noreply.github.com',
+                    username: 'test'
                 },
                 committer: {
-                    name: 'baxterthehacker',
-                    email: 'baxterthehacker@users.noreply.github.com',
-                    username: 'baxterthehacker'
+                    name: 'test',
+                    email: 'test@users.noreply.github.com',
+                    username: 'test'
                 },
                 added: [],
                 removed: [],
@@ -30,14 +30,14 @@ describe('webhooks', () => {
                 message: 'Update README.md',
                 timestamp: '2015-05-05T19:40:15-04:00',
                 author: {
-                    name: 'baxterthehacker',
-                    email: 'baxterthehacker@users.noreply.github.com',
-                    username: 'baxterthehacker'
+                    name: 'test',
+                    email: 'test@users.noreply.github.com',
+                    username: 'test'
                 },
                 committer: {
-                    name: 'baxterthehacker',
-                    email: 'baxterthehacker@users.noreply.github.com',
-                    username: 'baxterthehacker'
+                    name: 'test',
+                    email: 'test@users.noreply.github.com',
+                    username: 'test'
                 },
                 added: [],
                 removed: [],
@@ -46,8 +46,8 @@ describe('webhooks', () => {
                 ]
             }],
             pusher: {
-                name: 'baxterthehacker',
-                email: 'baxterthehacker@users.noreply.github.com'
+                name: 'test',
+                email: 'test@users.noreply.github.com'
             }
         };
 

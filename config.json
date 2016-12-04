@@ -1,0 +1,8 @@
+{
+    "events": {
+        "EVERY_COMMIT": "",
+        "DOUBLE_COMMIT": "",
+        "TRIPLE_COMMIT": "",
+        "RAMPAGE_COMMIT": ""
+    }
+}
