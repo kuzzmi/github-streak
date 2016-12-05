@@ -2,6 +2,13 @@
   "name": "github-streak",
   "version": "0.1.0",
   "description": "![](https://travis-ci.org/kuzzmi/github-streak.svg?branch=master)",
+  "keywords": [
+      "github",
+      "git",
+      "monitor",
+      "contributions",
+      "slack"
+  ],
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
