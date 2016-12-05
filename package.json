@@ -1,6 +1,6 @@
 {
   "name": "github-streak",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "![](https://travis-ci.org/kuzzmi/github-streak.svg?branch=master)",
   "main": "index.js",
   "scripts": {
