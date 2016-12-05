@@ -39,6 +39,7 @@ Available message replacements in templates:
 Example (see `config.json`):
 ```
 {
+    "multi_timeout": 120000,
     "events": {
         "COMMIT": "%an made a commit: %cm",
         "DOUBLE_COMMIT": "%an got a double commit!",
