@@ -1,6 +1,6 @@
 {
   "name": "github-streak",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "github-streak is a tool to monitor a GitHub repository and collect short-term information about contributions, triggering a webhook based on the event.",
   "keywords": [
     "github",
