@@ -35,6 +35,7 @@ const initTimer = commit => {
         count++;
         clearTimeout(timers[author]);
     }
+    count = count > 5 ? 5 : count;
     multiCommits[author] = count;
     timers[author] = setTimeout(function() {
         delete timers[author];
@@ -78,17 +79,6 @@ module.exports.addContribution = contribution => {
 
     return contributions;
 };
-
-// мы создаем таймер и вставляем в хеш
-// {
-//      author_name: timeout
-// }
-// затем, если таймер там уже есть - обновляем 
-// multiCommits = { author_name: 4 };
-// streaks = {};
-// {
-//      author_name: timeout
-// }
 
 module.exports.getContributions = () => {
     return contributions;
