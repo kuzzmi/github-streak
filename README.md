@@ -10,7 +10,7 @@ Example: you have a pretty active team and you want to gamify the workflow by di
 
 # What is done now
 
-Currently it works only by posting a formatted message about each commit to a given Slack webhook URL.
+Currently it works only by posting a formatted message about each commit to a given Slack webhook URL as well as multi commits (2x-5x from 'double' to 'RA-A-AMPAGE').
 
 More integrations and event types will come soon.
 
@@ -41,6 +41,8 @@ Example (see `config.json`):
 {
     "events": {
         "COMMIT": "%an made a commit: %cm",
+        "DOUBLE_COMMIT": "%an got a double commit!",
+        "TRIPLE_COMMIT": "%an got a triple commit!"
     }
 }
 ```
@@ -53,8 +55,6 @@ Example (see `config.json`):
 * add more event types and replacers:
 ```
 "FIRST_COMMIT": "%an opened a coding day by pushing his first commit at %cd: %cm",
-"DOUBLE_COMMIT": "%an got a double commit!",
-"TRIPLE_COMMIT": "%an got a triple commit!"
 ```
 * moar
 ...
