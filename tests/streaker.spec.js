@@ -2,70 +2,40 @@ const expect = require('chai').expect;
 const sinon = require('sinon');
 const mockery = require('mockery');
 
-const contribution1 = {
-    id: '0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1c',
+const makeCommit = ( number, author ) => ({
+    id: `0d1a26e67d8f5eaf1f6ba5c57fc3c7d91ac0fd1${number}`,
     message: 'Test',
     timestamp: '2015-05-05T19:40:15-04:00',
     author: {
-        name: 'test',
+        name: author,
         email: 'test@users.noreply.github.com',
-        username: 'test'
+        username: author
     },
     committer: {
-        name: 'test',
+        name: author,
         email: 'test@users.noreply.github.com',
-        username: 'test'
+        username: author
     },
     added: [],
     removed: [],
     modified: [
         'README.md'
     ]
-};
+});
 
-const contribution2 = {
-    id: '0d1a26e6718f5eaf1f6ba5c57fc3c7d91ac0fd1c',
-    message: 'Test',
-    timestamp: '2015-05-05T19:40:15-04:00',
-    author: {
-        name: 'test',
-        email: 'test@users.noreply.github.com',
-        username: 'test'
-    },
-    committer: {
-        name: 'test',
-        email: 'test@users.noreply.github.com',
-        username: 'test'
-    },
-    added: [],
-    removed: [],
-    modified: [
-        'README.md'
-    ]
-};
-
-const contribution3 = {
-    id: '0d1a26e67d8fdaaf1f6ba5c57fc3c7d91ac0fd1c',
-    message: 'Test',
-    timestamp: '2015-05-05T19:40:15-04:00',
-    author: {
-        name: 'test2',
-        email: 'test2@users.noreply.github.com',
-        username: 'test2'
-    },
-    committer: {
-        name: 'test',
-        email: 'test@users.noreply.github.com',
-        username: 'test'
-    },
-    added: [],
-    removed: [],
-    modified: [
-        'README.md'
-    ]
-};
+const contribution0 = makeCommit(0, 'test');
+const contribution1 = makeCommit(1, 'test');
+const contribution2 = makeCommit(2, 'test');
+const contribution3 = makeCommit(3, 'test2');
+const contribution4 = makeCommit(4, 'test');
+const contribution5 = makeCommit(5, 'test');
+const contribution6 = makeCommit(6, 'test');
+const contribution7 = makeCommit(7, 'test');
+const contribution8 = makeCommit(8, 'test');
+const contribution9 = makeCommit(9, 'test');
 
 describe('streaker', () => {
+    let config;
     let slack;
     let streaker;
 
@@ -76,12 +46,17 @@ describe('streaker', () => {
             useCleanCache: true
         });
 
+        config = {
+            multi_timeout: 10
+        };
+
         slack = {
             post: sinon.spy(() => {
                 return Promise.resolve();
             })
         };
 
+        mockery.registerMock('../config', config);
         mockery.registerMock('./integrations/slack.js', slack);
 
         streaker = require('../app/streaker');
@@ -176,6 +151,36 @@ describe('streaker', () => {
                 commit: contribution1,
                 type: 'COMMIT'
             })).to.be.true;
+        });
+
+        it('should call slack.post() on 2 sequential commits with event type DOUBLE_COMMIT', (done) => {
+            streaker.addContribution(contribution1);
+            streaker.addContribution(contribution2);
+
+            setTimeout(function() {
+                expect(slack.post.called).to.be.true;
+                expect(slack.post.calledWith({
+                    commit: contribution2,
+                    type: 'DOUBLE_COMMIT'
+                })).to.be.true;
+                done();
+            }, config.multi_timeout * 2);
+        });
+
+        it('should call slack.post() on 3 sequential commits with event type TRIPLE_COMMIT', done => {
+            streaker.empty();
+            streaker.addContribution(contribution1);
+            streaker.addContribution(contribution2);
+            streaker.addContribution(contribution0);
+
+            setTimeout(function() {
+                expect(slack.post.called).to.be.true;
+                expect(slack.post.calledWith({
+                    commit: contribution0,
+                    type: 'TRIPLE_COMMIT'
+                })).to.be.true;
+                done();
+            }, config.multi_timeout * 3);
         });
     });
 });

@@ -1,8 +1,10 @@
 {
+    "multi_timeout": 120000,
     "events": {
         "COMMIT": "%an made a commit: %cm",
-        "DOUBLE_COMMIT": "",
-        "TRIPLE_COMMIT": "",
-        "RAMPAGE_COMMIT": ""
+        "DOUBLE_COMMIT": "%an just made a DOUBLE COMMIT!",
+        "TRIPLE_COMMIT": "%an just made a TRIPLE COMMIT!!",
+        "ULTRA_COMMIT": "%an just made an ULTRA COMMIT!!!",
+        "RAMPAGE_COMMIT": " %an is on the RA-A-AMPAGE!!!"
     }
 }
