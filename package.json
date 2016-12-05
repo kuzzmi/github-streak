@@ -1,7 +1,7 @@
 {
   "name": "github-streak",
   "version": "0.1.1",
-  "description": "![](https://travis-ci.org/kuzzmi/github-streak.svg?branch=master)",
+  "description": "github-streak is a tool to monitor a GitHub repository and collect short-term information about contributions, triggering a webhook based on the event.",
   "keywords": [
     "github",
     "git",
